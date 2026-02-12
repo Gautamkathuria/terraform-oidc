@@ -10,8 +10,8 @@ module "s3_bucket" {
 resource "aws_s3_object" "object" {
   bucket = module.s3_bucket.bucket_name
   key    = "uploads/hello.txt"
-  source = "/home/gautam/Desktop/project/terraform/awss3/files/hello.txt"
-  etag   = filemd5("/home/gautam/Desktop/project/terraform/awss3/files/hello.txt")
+  source = "${path.module}/files/hello.txt"
+  etag   = filemd5("${path.module}/files/hello.txt")
 }
 
 resource "aws_s3_bucket_public_access_block" "bpa" {
